@@ -7,32 +7,30 @@
  */
 
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {createForm} from '@formily/core';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {createSchemaField, FormProvider} from '@formily/react';
-import {InputItem} from '@ant-design/react-native';
+import {MyCom} from './src/components/MyCom';
 
 const form = createForm();
 
 const SchemaField = createSchemaField({
-  components: {InputItem},
+  components: {MyCom},
 });
+
+const handleClick = (data) => {
+  console.log('接收click事件', data);
+};
 
 const normalSchema = {
   type: 'object',
   properties: {
     username: {
-      type: 'string',
-      title: '用户名',
-      required: true,
-      'x-component': 'InputItem',
-    },
-    password: {
-      type: 'string',
-      title: '密码',
-      required: true,
-      'x-component': 'InputItem',
+      'x-component': 'MyCom',
+      'x-component-props': {
+        title: 'test title',
+        onClick: (data) => handleClick(data),
+      },
     },
   },
 };
@@ -46,14 +44,5 @@ const App: () => React$Node = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-});
 
 export default App;

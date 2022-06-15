@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@ant-design/react-native": "^5.0.0",
     "@formily/antd": "^2.1.4",
     "@formily/core": "^2.1.4",
